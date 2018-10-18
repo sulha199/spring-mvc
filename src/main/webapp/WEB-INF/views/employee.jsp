@@ -8,13 +8,24 @@ charset=ISO-8859-1">
 </head>
 <body>
 	<div align="center">
+		<a href="${pageContext.request.
+contextPath}/logoutPage"> Logout
+		</a>
 		<h1 style="background-color: lightgreen; color: darkgreen">Employee
 			List</h1>
 		<table align="center" width="80%" cellspacing="0" cellpadding="5">
 			<tr>
-				<td align="right"><a
-					href="${pageContext.request.contextPath}/employee/addemployee"
-					style="background-color: lightblue;"> Add Employee </a></td>
+				<td align="right">
+					<table cellspacing="0" cellpadding="6" border="0" width="100%">
+						<tr bgcolor="lightblue">
+							<td align="left"><a
+								href="${pageContext.request.contextPath}/employee/addemployee"
+								style="background-color: lightblue;"> Add Employee </a></td>
+							<td align="right"><a
+								href="${pageContext.request.contextPath}/logout">Logout</a></td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 			<tr bgcolor="grey" style="color: white">
 				<th>No</th>

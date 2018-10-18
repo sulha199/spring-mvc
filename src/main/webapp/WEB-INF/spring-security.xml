@@ -8,17 +8,18 @@
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http>
-		<intercept-url pattern='/employee'
-			access='ROLE_USER,ROLE_ADMIN ' />
-		<intercept-url pattern='/employee*'
-			access='ROLE_USER,ROLE_ADMIN ' />
-		<intercept-url pattern='/employeeAdd' access='ROLE_USER' />
-		<intercept-url pattern='/employeeDelete'
-			access='ROLE_ADMIN' />
+	<!-- To allow standards-based @Secured annotation, enable secured-annotations -->
+	<global-method-security
+		secured-annotations="enabled" />
 
-		<!-- Adds Support for basic authentication -->
-		<http-basic />
+	<http auto-config="true">
+		<intercept-url pattern="/employee/*" access="ROLE_ADMIN,ROLE_USER" />
+		<form-login login-processing-url="/login"
+			login-page="/loginPage" username-parameter="username"
+			password-parameter="password"
+			default-target-url="/employee/listEmployees"
+			authentication-failure-url="/loginPage?auth=fail" />
+		<logout logout-url="/logout" logout-success-url="/logoutPage" />
 	</http>
 
 	<authentication-manager>
